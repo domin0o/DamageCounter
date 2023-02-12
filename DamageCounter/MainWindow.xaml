@@ -1,0 +1,24 @@
+﻿<Window x:Class="DamageCounter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DamageCounter"
+        mc:Ignorable="d"
+        Title="Obrażenia od miecza" Height="175" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <CheckBox Content="Płonący" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="flaming" Checked="flaming_Checked" Unchecked="flaming_Unchecked"/>
+        <CheckBox Grid.Column="1" Content="Magiczny" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="magic" Unchecked="magic_Unchecked" Checked="magic_Checked"/>
+        <Button Content="Wykonaj rzut" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="1" Grid.ColumnSpan="2" Width="280" Height="33" Click="Button_Click"/>
+        <TextBlock x:Name="damage"  HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Obrażenia: " VerticalAlignment="Center" RenderTransformOrigin="-0.023,0.391" Grid.ColumnSpan="2" Margin="120,0,0,0"/>
+    </Grid>
+</Window>
