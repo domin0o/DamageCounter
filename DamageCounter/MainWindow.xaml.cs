@@ -20,14 +20,13 @@ namespace DamageCounter
     /// </summary>
     public partial class MainWindow : Window
     {
-        SwordDamage swordDamage = new SwordDamage();
-        Random random= new Random();
+        Random random = new Random();
+        SwordDamage swordDamage;
         public MainWindow()
         {
             InitializeComponent();
-            swordDamage.SetMagic(magic.IsChecked.Value);
-            swordDamage.SetFlaming(flaming.IsChecked.Value);
-            RollDice();
+            swordDamage = new SwordDamage(random.Next(1, 7) + random.Next(1, 7) + random.Next(1, 7)) ;
+            swordDamage.CalculateDamage();
         }
 
         public void RollDice()
@@ -37,30 +36,30 @@ namespace DamageCounter
         }
         void DisplayDamage()
         {
-            damage.Text = "Rzut: " + swordDamage.Roll + ", punkty obrażeń: " + swordDamage.Damage;
+            damage.Text = $"Rzut: {swordDamage.Roll} , punkty obrażeń:  {swordDamage.Damage}";
         }
 
         private void flaming_Checked(object sender, RoutedEventArgs e)
         {
-            swordDamage.SetFlaming(true);
+            swordDamage.Flaming = true;
             DisplayDamage();
         }
 
         private void flaming_Unchecked(object sender, RoutedEventArgs e)
         {
-            swordDamage.SetFlaming(false);
+            swordDamage.Flaming = false;
             DisplayDamage();
         }
 
         private void magic_Unchecked(object sender, RoutedEventArgs e)
         {
-            swordDamage.SetMagic(false);
+            swordDamage.Magic = false;
             DisplayDamage();
         }
 
         private void magic_Checked(object sender, RoutedEventArgs e)
         {
-            swordDamage.SetMagic(true);
+            swordDamage.Magic = true;
             DisplayDamage();
         }
 
